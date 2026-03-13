@@ -22,7 +22,9 @@ app.use("/uploads", express.static(path.join(process.cwd(), "uploads")));
 app.get("/health", async (req, res) => {
   res.json({ status: "OK" });
 });
-
+app.get("/", (req, res) => {
+  res.json({ message: "Backend is running!" });
+});
 app.listen(5000, () => {
   console.log("Server start at port : 5000");
 });
