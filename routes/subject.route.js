@@ -206,7 +206,7 @@ WHERE student_id = $1
 subjectRoute.get("/get-all-professors", async (req, res) => {
   try {
     const result = await pool.query(
-      `SELECT id, fullname FROM professors ORDER BY fullname ASC`
+      `SELECT id, fullname, tel FROM professors ORDER BY fullname ASC`
     );
     res.status(200).json({ data: result.rows });
   } catch (error) {
