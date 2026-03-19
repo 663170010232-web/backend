@@ -15,9 +15,9 @@ stdRoute.post("/create-std", async (req, res) => {
       return res.json({ err: "มีข้อมูลรหัสนักศึกษานี้หรือ username นี้อยู่แล้ว" });
 
     const query = `INSERT INTO students (fullname, std_class_id, username, password, major) 
-                   VALUES ($1, $2, $3, $4, $5, $6) RETURNING *`;
+                   VALUES ($1, $2, $3, $4, $5,) RETURNING *`;
 
-    const result = await pool.query(query, [studentId, fullName, studentId, username, password, "IT"]);
+    const result = await pool.query(query, [fullName, studentId, username, password, "IT"]);
     if (!result) return res.status(400);
 
     return res.status(200).json({ ok: true });
